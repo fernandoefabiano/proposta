@@ -23,8 +23,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --fundo:#090a1b; --fundo-2:#10122b; --texto:#f6f1fa; --texto-2:#a9a6c4;
-  --brasa:#ff8f3a; --brasa-2:#ffb066; --violeta:#6e46ff; --linha:rgba(255,255,255,.10);
+  --fundo:#090a1b; --fundo-2:#10122b; --texto:#f6f1fa; --texto-2:#a9a6c4; --texto-3:#5f5c82;
+  --brasa:#ff8f3a; --brasa-2:#ffb066; --violeta:#6e46ff; --linha:rgba(255,255,255,.11);
   --serif:'Cinzel','Trajan Pro',Georgia,serif;
   --cond:'Barlow Condensed','Arial Narrow',Arial,sans-serif;
   --corpo:'Barlow',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
@@ -35,7 +35,15 @@ body{background:var(--fundo);color:var(--texto);font-family:var(--corpo);min-hei
 body.travado{overflow:hidden;height:100dvh}
 button,a{font:inherit;color:inherit}
 button{background:none;border:0;cursor:pointer}
+img{max-width:100%}
 :focus-visible{outline:2px solid var(--brasa-2);outline-offset:3px}
+
+/* ---------- alternância PC / celular ---------- */
+.so-cel{display:none}
+@media (max-width:860px),(orientation:portrait) and (max-width:1100px){
+  .so-pc,.contador{display:none}
+  .so-cel{display:block}
+}
 
 /* ---------- tela de entrada ---------- */
 .entrada{position:fixed;inset:0;z-index:60;display:flex;align-items:center;overflow:hidden;cursor:pointer;
@@ -64,12 +72,12 @@ button{background:none;border:0;cursor:pointer}
 .cta::before,.cta::after{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid var(--brasa-2);opacity:0;animation:pulso 2.4s ease-out infinite}
 .cta::after{animation-delay:1.2s}
 .aviso{margin-top:16px;font:400 14px/1.4 var(--corpo);color:var(--texto-2);letter-spacing:.02em}
-
 @keyframes pulso{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.35,1.9);opacity:0}}
 @keyframes sobe{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 @keyframes chega{from{opacity:0;transform:translateX(5vw) scale(1.03)}to{opacity:1;transform:none}}
+@keyframes chegaM{from{opacity:0;transform:translateX(-50%) translateY(3vh) scale(1.04)}to{opacity:1;transform:translateX(-50%)}}
 
-/* ---------- proposta ---------- */
+/* ---------- elementos fixos ---------- */
 .topo{position:fixed;inset:0 0 auto 0;z-index:30;height:3px;background:rgba(255,255,255,.07)}
 .topo i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--violeta),var(--brasa));transition:width .25s}
 .contador{position:fixed;top:max(14px,env(safe-area-inset-top));left:14px;z-index:30;padding:7px 12px;border-radius:999px;
@@ -77,30 +85,27 @@ button{background:none;border:0;cursor:pointer}
   font:600 14px/1 var(--cond);letter-spacing:.16em;color:var(--texto-2)}
 .contador b{color:var(--brasa);font-weight:700}
 .som{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));z-index:40;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;
-  background:rgba(16,18,43,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,143,58,.55);box-shadow:0 8px 28px rgba(0,0,0,.45)}
+  background:rgba(16,18,43,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,143,58,.55);box-shadow:0 8px 28px rgba(0,0,0,.45)}
 .som svg{width:24px;height:24px;color:var(--brasa-2)}
 .som .eq{display:none;gap:3px;align-items:flex-end;height:20px}
 .som .eq i{width:3.5px;border-radius:2px;background:var(--brasa-2);height:100%;transform-origin:bottom;animation:eq 1s ease-in-out infinite}
 .som .eq i:nth-child(2){animation-delay:-.35s}.som .eq i:nth-child(3){animation-delay:-.7s}.som .eq i:nth-child(4){animation-delay:-.15s}
 .som.tocando .eq{display:flex}.som.tocando .ico{display:none}
 @keyframes eq{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
+.whats{position:fixed;left:14px;bottom:max(14px,env(safe-area-inset-bottom));z-index:40;display:inline-flex;align-items:center;gap:9px;padding:14px 20px 14px 16px;border-radius:999px;text-decoration:none;
+  background:linear-gradient(135deg,var(--brasa-2),var(--brasa) 55%,#ff6a1f);color:#1a0c02;font:700 15px/1 var(--cond);letter-spacing:.16em;text-transform:uppercase;
+  box-shadow:0 10px 30px rgba(255,120,30,.4);transform:translateY(140%);opacity:0;pointer-events:none;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .4s}
+.whats.mostra{transform:none;opacity:1;pointer-events:auto}
+.whats svg{width:20px;height:20px}
 
-main{display:block}
+/* ---------- formato PC: slides ---------- */
 .quadro{display:grid;place-items:center;padding:0}
-.slide{display:block;position:relative;width:min(100vw,calc(100dvh*16/9));aspect-ratio:16/9;background:var(--fundo-2);cursor:zoom-in;
-  opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
-.slide.vista{opacity:1;transform:none}
+.slide{display:block;position:relative;width:min(100vw,calc(100dvh*16/9));aspect-ratio:16/9;background:var(--fundo-2);
+  transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.pre{opacity:0;transform:translateY(18px)}
 .slide img{display:block;width:100%;height:100%;object-fit:cover}
-@media (orientation:landscape) and (min-width:700px){
-  main{scroll-snap-type:y proximity}
-  .quadro{min-height:100dvh;scroll-snap-align:center}
-  .slide{cursor:default}
-}
-@media (orientation:portrait),(max-width:699px){
-  .quadro{padding:7px 0}
-  .slide{box-shadow:0 10px 30px rgba(0,0,0,.45)}
-  main{padding-top:56px}
-}
+.so-pc{scroll-snap-type:y proximity}
+.so-pc .quadro{min-height:100dvh;scroll-snap-align:center}
 
 .fecho{padding:clamp(48px,8vw,110px) 22px calc(clamp(70px,9vw,120px) + env(safe-area-inset-bottom));text-align:center;
   background:radial-gradient(700px 360px at 50% 0,rgba(255,143,58,.16),transparent 70%)}
@@ -114,39 +119,128 @@ main{display:block}
 .botoes svg{width:20px;height:20px}
 .rodape{margin-top:46px;font:500 13px/1.6 var(--cond);letter-spacing:.2em;text-transform:uppercase;color:#6f6c91}
 
-.whats{position:fixed;left:14px;bottom:max(14px,env(safe-area-inset-bottom));z-index:40;display:inline-flex;align-items:center;gap:9px;padding:14px 20px 14px 16px;border-radius:999px;text-decoration:none;
-  background:linear-gradient(135deg,var(--brasa-2),var(--brasa) 55%,#ff6a1f);color:#1a0c02;font:700 15px/1 var(--cond);letter-spacing:.16em;text-transform:uppercase;
-  box-shadow:0 10px 30px rgba(255,120,30,.4);transform:translateY(140%);opacity:0;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .4s}
-.whats.mostra{transform:none;opacity:1}
-.whats svg{width:20px;height:20px}
+/* ---------- formato celular: conteúdo em coluna ---------- */
+.m-sec{max-width:680px;margin:0 auto;padding:64px max(20px,env(safe-area-inset-right)) 0 max(20px,env(safe-area-inset-left))}
+.m-eyebrow{display:flex;align-items:center;gap:12px;font:600 13px/1 var(--cond);letter-spacing:.3em;text-transform:uppercase;color:var(--brasa)}
+.m-eyebrow::before{content:"";width:32px;height:2px;background:var(--brasa);flex:none}
+.m-h2{margin-top:14px;font:700 clamp(36px,11.5vw,56px)/.98 var(--cond);text-transform:uppercase;letter-spacing:.005em;text-wrap:balance}
+.m-h2 em{font-style:normal;color:var(--brasa)}
+.m-p{margin-top:16px;color:#d6d1e8;font-size:17px;line-height:1.6}
+.m-p b{color:var(--texto);font-weight:500}
+.m-p a,.m-nota a{color:var(--brasa-2);text-underline-offset:3px}
+.m-nota{margin-top:16px;color:var(--texto-2);font-size:14.5px;line-height:1.5}
 
-/* ---------- ampliar slide (celular em pé: gira o slide para ocupar a tela) ---------- */
-.luz{position:fixed;inset:0;z-index:80;background:#000;display:grid;place-items:center;animation:aparece .25s ease both}
-.luz[hidden]{display:none}
-.luz img{position:absolute;top:50%;left:50%;width:100vw;height:100dvh;object-fit:contain;transform:translate(-50%,-50%)}
-@media (orientation:portrait){.luz img{width:100dvh;height:100vw;transform:translate(-50%,-50%) rotate(90deg)}}
-.luz button{position:absolute;z-index:2;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:26px;line-height:1}
-.luz .fechar{top:max(14px,env(safe-area-inset-top));right:14px}
-.luz .ant,.luz .prox{bottom:max(18px,env(safe-area-inset-bottom))}
-.luz .ant{left:calc(50% - 62px)}.luz .prox{left:calc(50% + 12px)}
-@media (orientation:landscape){.luz .ant,.luz .prox{bottom:auto;top:calc(50% - 25px)}.luz .ant{left:14px}.luz .prox{left:auto;right:14px}}
-@keyframes aparece{from{opacity:0}to{opacity:1}}
+.m-hero{position:relative;overflow:hidden;padding-bottom:40px;
+  background:radial-gradient(560px 460px at 82% 6%,rgba(255,143,58,.24),transparent 66%),radial-gradient(600px 520px at -10% 62%,rgba(110,70,255,.3),transparent 66%)}
+.m-hero-foto{width:min(100%,540px);margin:0 auto;aspect-ratio:1/1;padding-top:max(0px,env(safe-area-inset-top))}
+.m-hero-foto img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.m-hero-txt{position:relative;max-width:680px;margin:-16vw auto 0;padding:0 max(20px,env(safe-area-inset-right)) 0 max(20px,env(safe-area-inset-left))}
+.m-hero .nome{margin-top:16px;font-size:clamp(44px,13.5vw,84px)}
+.m-sub{margin-top:14px;color:var(--texto-2);font:500 clamp(15px,4.4vw,19px)/1.3 var(--cond);letter-spacing:.14em;text-transform:uppercase}
+.m-chips{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.m-chips li{padding:10px 14px;border-radius:999px;border:1px solid rgba(255,143,58,.5);background:rgba(255,143,58,.08);font:600 15px/1 var(--cond);letter-spacing:.14em;text-transform:uppercase}
 
-.dica{position:fixed;left:50%;bottom:max(80px,calc(env(safe-area-inset-bottom) + 76px));z-index:45;transform:translate(-50%,10px);opacity:0;pointer-events:none;
-  padding:11px 18px;border-radius:999px;background:rgba(16,18,43,.92);border:1px solid var(--linha);font:500 14px/1.2 var(--corpo);color:var(--texto);white-space:nowrap;transition:opacity .5s,transform .5s}
-.dica.mostra{opacity:1;transform:translate(-50%,0)}
+.m-tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:26px}
+.m-tile{min-width:0;padding:16px 16px 18px;border-radius:16px;border:1px solid var(--linha);background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02))}
+.m-tile small{display:block;font:600 12px/1 var(--cond);letter-spacing:.26em;text-transform:uppercase;color:var(--brasa)}
+.m-tile b{display:block;margin-top:12px;font:700 clamp(28px,9vw,40px)/1 var(--cond);text-transform:uppercase;overflow-wrap:anywhere}
+.m-tile b.mn{font-size:clamp(22px,6.6vw,30px);line-height:1.02}
+.m-tile span{display:block;margin-top:8px;color:var(--texto-2);font-size:14px}
 
+.m-dupla-nome{margin-top:14px;font:500 clamp(34px,10vw,52px)/1 var(--serif)}
+.m-dupla-nome em{font-style:normal;color:var(--brasa)}
+.m-dupla-img{display:block;width:calc(100% + 40px);max-width:none;height:auto;margin:10px -20px -26px}
+.m-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px;padding-top:22px;border-top:1px solid var(--linha)}
+.m-stats b{display:block;font:700 clamp(26px,8.2vw,40px)/1 var(--cond);text-transform:uppercase}
+.m-stats span{display:block;margin-top:8px;color:var(--texto-2);font-size:12.5px;line-height:1.38}
+
+.m-foto{margin:22px 0 0;border-radius:18px;overflow:hidden;border:1px solid var(--linha);background:var(--fundo-2)}
+.m-foto img{display:block;width:100%;height:auto}
+.m-lista{list-style:none;padding:0;margin:22px 0 0;border-top:1px solid var(--linha)}
+.m-lista li{display:grid;grid-template-columns:38px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--linha)}
+.m-lista .n{font:700 24px/1 var(--cond);color:var(--brasa)}
+.m-lista b{display:block;font:600 21px/1.12 var(--cond);letter-spacing:.03em;text-transform:uppercase}
+.m-lista span{display:block;margin-top:5px;color:var(--texto-2);font-size:15px;line-height:1.45}
+.m-lista a{color:var(--brasa-2)}
+
+.m-cap{display:flex;align-items:baseline;gap:14px;margin-top:26px}
+.m-cap b{font:700 clamp(60px,19vw,92px)/.85 var(--cond)}
+.m-cap span{font:600 14px/1.25 var(--cond);letter-spacing:.2em;text-transform:uppercase;color:var(--texto-2)}
+.m-tags{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.m-tags li{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid var(--linha);background:rgba(255,255,255,.04);font-size:15px}
+.m-tags li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brasa);flex:none}
+
+.m-fase{margin-top:14px;padding:20px 18px 6px;border-radius:18px;border:1px solid var(--linha);background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.02))}
+.m-fase:first-of-type{margin-top:24px}
+.m-fase em{display:inline-block;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,143,58,.55);font:600 12px/1 var(--cond);letter-spacing:.24em;text-transform:uppercase;font-style:normal;color:var(--brasa)}
+.m-fase h3{margin-top:12px;font:700 30px/1 var(--cond);text-transform:uppercase}
+.m-fase ul{list-style:none;padding:0;margin:14px 0 0}
+.m-fase li{position:relative;padding:12px 0 12px 20px;border-top:1px solid var(--linha);font-size:16px;line-height:1.4}
+.m-fase li::before{content:"";position:absolute;left:2px;top:19px;width:6px;height:6px;border-radius:50%;background:var(--brasa)}
+
+.m-plano{position:relative;margin-top:14px;padding:22px 18px 8px;border-radius:20px;border:1px solid var(--linha);background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.02))}
+.m-plano:first-of-type{margin-top:24px}
+.m-plano.ouro{border-color:rgba(255,143,58,.75);background:linear-gradient(160deg,rgba(255,143,58,.18),rgba(255,143,58,.04) 62%);box-shadow:0 18px 50px rgba(255,120,30,.14)}
+.m-plano header{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.m-plano h3{font:700 clamp(38px,12vw,52px)/.9 var(--cond);text-transform:uppercase}
+.m-plano.ouro h3{color:var(--brasa-2)}.m-plano.prata h3{color:#d7d9e6}.m-plano.bronze h3{color:#d9955a}
+.m-plano small{display:block;margin-top:8px;font:600 12px/1 var(--cond);letter-spacing:.26em;text-transform:uppercase;color:var(--texto-2)}
+.m-preco{text-align:right}
+.m-preco b{display:block;font:700 clamp(28px,8.6vw,38px)/1 var(--cond);white-space:nowrap}
+.m-preco span{display:block;margin-top:6px;font:600 11px/1 var(--cond);letter-spacing:.24em;text-transform:uppercase;color:var(--texto-2)}
+.m-plano dl{margin:18px 0 0}
+.m-plano dl div{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid var(--linha);font-size:15px;line-height:1.35}
+.m-plano dt{color:var(--texto-2)}
+.m-plano dd{text-align:right;font-weight:500}
+.m-plano dd.nao{color:var(--texto-3);font-weight:400}
+
+.m-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.m-pills span{padding:8px 12px;border-radius:999px;font:600 12px/1 var(--cond);letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--linha);color:var(--texto-2)}
+.m-pills span.d{border-color:rgba(255,143,58,.7);background:rgba(255,143,58,.12);color:var(--brasa-2)}
+.m-incl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:22px}
+.m-incl div{padding:14px 10px;border-radius:14px;border:1px solid var(--linha);text-align:center;color:var(--texto-3)}
+.m-incl div.sim{border-color:rgba(255,143,58,.7);background:rgba(255,143,58,.1);color:var(--brasa-2)}
+.m-incl b{display:block;font:700 22px/1 var(--cond);text-transform:uppercase}
+.m-incl span{display:block;margin-top:6px;font:600 11px/1.2 var(--cond);letter-spacing:.16em;text-transform:uppercase}
+
+.m-boreal{margin-top:72px;padding:56px 0 calc(110px + env(safe-area-inset-bottom));
+  background:radial-gradient(520px 380px at 95% 0,rgba(31,200,255,.2),transparent 70%),radial-gradient(520px 420px at -10% 38%,rgba(25,247,178,.13),transparent 70%),radial-gradient(500px 400px at 60% 100%,rgba(138,92,255,.16),transparent 70%),#050b14}
+.m-boreal .m-sec{padding-top:0}
+.m-boreal .m-eyebrow{color:#1fc8ff}.m-boreal .m-eyebrow::before{background:#1fc8ff}
+.m-logo{display:block;width:min(78%,330px);height:auto;margin-bottom:34px}
+.m-boreal .m-h2{font-size:clamp(34px,10.4vw,52px)}
+.m-boreal .m-h2 em{color:#19f7b2}
+.m-bshow{display:block;width:calc(100% + 40px);max-width:none;margin:26px -20px 0;height:auto}
+.m-bfotos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.m-bfotos img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid rgba(255,255,255,.12)}
+.m-pilares{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:0;border-top:1px solid rgba(255,255,255,.14)}
+.m-pilares li{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.m-pilares b{display:block;font:700 15px/1 var(--cond);letter-spacing:.3em;text-transform:uppercase;color:#19f7b2}
+.m-pilares span{display:block;margin-top:7px;color:#bcc6d8;font-size:15.5px;line-height:1.4}
+.m-contato{margin-top:36px;padding:22px 18px;border-radius:20px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04)}
+.m-contato small{display:block;font:600 12px/1 var(--cond);letter-spacing:.26em;text-transform:uppercase;color:#1fc8ff}
+.m-contato h3{margin-top:10px;font:700 34px/1 var(--cond);text-transform:uppercase}
+.m-btns{display:grid;gap:10px;margin-top:20px}
+.m-btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:17px 20px;border-radius:999px;text-decoration:none;font:700 17px/1 var(--cond);letter-spacing:.16em;text-transform:uppercase;border:1.5px solid rgba(31,200,255,.6);background:rgba(31,200,255,.08)}
+.m-btn svg{width:20px;height:20px;flex:none}
+.m-btn.prim{background:linear-gradient(135deg,#19f7b2,#1fc8ff 55%,#8a5cff);color:#04120d;border-color:transparent;box-shadow:0 12px 34px rgba(31,200,255,.25)}
+.m-dados{list-style:none;padding:0;margin:20px 0 0;border-top:1px solid rgba(255,255,255,.14)}
+.m-dados li{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.14);min-width:0}
+.m-dados span{flex:none;width:100%;font:600 12px/1 var(--cond);letter-spacing:.22em;text-transform:uppercase;color:#8fa3bd}
+.m-dados b{flex:1;min-width:0;font:500 16px/1.3 var(--corpo);overflow-wrap:anywhere}
+.m-dados button{flex:none;padding:8px 14px;border-radius:999px;border:1.5px solid rgba(31,200,255,.6);font:700 12px/1 var(--cond);letter-spacing:.16em;text-transform:uppercase;color:#1fc8ff}
+.m-fim{margin-top:40px;text-align:center;font:500 12px/1.7 var(--cond);letter-spacing:.2em;text-transform:uppercase;color:#6f7f99}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .pre{opacity:1;transform:none}
+}
 @media (orientation:portrait),(max-width:760px){
   .entrada{align-items:flex-end}
   .entrada .dupla{right:auto;left:50%;transform:translateX(-50%);height:62dvh;width:112vw;max-width:none;object-position:center top;top:0;bottom:auto;animation:chegaM 1.6s cubic-bezier(.2,.7,.2,1) both}
   .entrada::after{background:linear-gradient(0deg,var(--fundo) 0%,rgba(9,10,27,.9) 34%,rgba(9,10,27,0) 66%)}
   .entrada .conteudo{padding-bottom:max(4px,env(safe-area-inset-bottom))}
   .cta{width:100%;justify-content:center}
-}
-@keyframes chegaM{from{opacity:0;transform:translateX(-50%) translateY(3vh) scale(1.04)}to{opacity:1;transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .slide{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -170,11 +264,12 @@ main{display:block}
 <div class="contador" aria-live="polite"><b id="atual">01</b> / <span id="total">11</span></div>
 
 <button class="som" id="som" type="button" aria-pressed="false" aria-label="Ligar ou desligar a música">
-  <svg class="ico" id="icoOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="m17 9 5 6M22 9l-5 6"/></svg>
+  <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="m17 9 5 6M22 9l-5 6"/></svg>
   <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
 </button>
 
-<main id="slides">
+<!-- ============ FORMATO PC: um slide por tela ============ -->
+<main class="so-pc" id="pc">
   <div class="quadro"><div class="slide" data-n="1"><img src="slides/s01.jpg" alt="Capa: Proposta de patrocínio do show ao vivo de Fernando e Fabiano, sábado, 19 de dezembro, 21h, Autentic Lounge" width="1920" height="1080"></div></div>
   <div class="quadro"><div class="slide" data-n="2"><img src="slides/s02.jpg" alt="O show: uma noite para ficar na memória. Sábado, 19/12, às 21h, no Autentic Lounge, em São Lourenço (MG)" width="1920" height="1080" loading="lazy"></div></div>
   <div class="quadro"><div class="slide" data-n="3"><img src="slides/s03.jpg" alt="A dupla Fernando e Fabiano: 243 mil seguidores no Instagram, 221 mil inscritos no YouTube e 7,1 milhões de visualizações em Não é só Terminar" width="1920" height="1080" loading="lazy"></div></div>
@@ -191,7 +286,7 @@ main{display:block}
     <h2>Vamos fazer essa noite <em>juntos?</em></h2>
     <p>Fale com Eduardo Baroni, da Boreal Produções, e escolha a cota que combina com a sua marca.</p>
     <div class="botoes">
-      <a class="principal" id="zap" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm5.7 14.03c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.12.07-1.8-.11-.42-.13-.95-.31-1.64-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.51.25.6.85 2.08.93 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.09 1.31 2.39 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.7-.17 1.38z"/></svg>WhatsApp</a>
+      <a class="principal zap" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm5.7 14.03c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.12.07-1.8-.11-.42-.13-.95-.31-1.64-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.51.25.6.85 2.08.93 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.09 1.31 2.39 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.7-.17 1.38z"/></svg>WhatsApp</a>
       <a href="mailto:baroni@tutamail.com?subject=Proposta%20de%20patroc%C3%ADnio%20%E2%80%93%20Fernando%20%26%20Fabiano"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>E-mail</a>
       <a href="https://instagram.com/baroniedu" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>@baroniedu</a>
     </div>
@@ -199,15 +294,199 @@ main{display:block}
   </section>
 </main>
 
-<a class="whats" id="whats" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm5.7 14.03c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.12.07-1.8-.11-.42-.13-.95-.31-1.64-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.51.25.6.85 2.08.93 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.09 1.31 2.39 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.7-.17 1.38z"/></svg>WhatsApp</a>
+<!-- ============ FORMATO CELULAR: conteúdo em coluna ============ -->
+<main class="so-cel" id="cel">
 
-<div class="luz" id="luz" hidden role="dialog" aria-label="Slide ampliado">
-  <img id="luzImg" alt="">
-  <button class="fechar" id="fechar" type="button" aria-label="Fechar">&times;</button>
-  <button class="ant" id="ant" type="button" aria-label="Slide anterior">&lsaquo;</button>
-  <button class="prox" id="prox" type="button" aria-label="Próximo slide">&rsaquo;</button>
-</div>
-<div class="dica" id="dica" role="status"></div>
+  <header class="m-hero">
+    <div class="m-hero-foto"><img src="img/dupla.webp" alt="Fernando e Fabiano" width="1424" height="1429"></div>
+    <div class="m-hero-txt">
+      <p class="m-eyebrow">Proposta de patrocínio</p>
+      <h2 class="nome">Fernando <em>&amp;</em> Fabiano</h2>
+      <p class="m-sub">Show ao vivo · Sertanejo<br>projeto NuDoze ao vivo</p>
+      <ul class="m-chips"><li>Sábado · 19/12</li><li>21:00</li><li>Autentic Lounge</li></ul>
+    </div>
+  </header>
+
+  <section class="m-sec">
+    <p class="m-eyebrow rev">O show</p>
+    <h2 class="m-h2 rev">Uma noite para <em>ficar</em> na memória</h2>
+    <p class="m-p rev">O show de <b>Fernando e Fabiano</b> reúne fãs, música ao vivo e muita energia em uma noite de celebração, e a sua marca pode fazer parte dela.</p>
+    <div class="m-tiles rev">
+      <div class="m-tile"><small>Data</small><b>19/12</b><span>Sábado</span></div>
+      <div class="m-tile"><small>Horário</small><b>21:00</b><span>Início do show</span></div>
+      <div class="m-tile"><small>Local</small><b class="mn">Autentic Lounge</b><span>São Lourenço · MG</span></div>
+      <div class="m-tile"><small>Atração</small><b class="mn">Fernando &amp; Fabiano</b><span>Sertanejo ao vivo</span></div>
+    </div>
+  </section>
+
+  <section class="m-sec">
+    <p class="m-eyebrow rev">A dupla</p>
+    <h2 class="m-dupla-nome rev">Fernando <em>&amp;</em> Fabiano</h2>
+    <p class="m-sub rev" style="margin-top:10px;color:var(--brasa)">Sertanejo · NuDoze ao vivo</p>
+    <p class="m-p rev">Dupla sertaneja com mais de 13 anos de videoclipes oficiais, Fernando e Fabiano reúnem milhões de visualizações e gravaram o projeto NuDoze ao vivo no Toka Club, em São José dos Campos (SP).</p>
+    <img class="m-dupla-img rev" src="img/m-dupla-banco.webp" alt="Fernando e Fabiano sentados em um banco" width="1000" height="1000" loading="lazy">
+    <div class="m-stats rev">
+      <div><b>243 mil</b><span>seguidores no Instagram @fernandoefabiano</span></div>
+      <div><b>221 mil</b><span>inscritos no canal oficial do YouTube</span></div>
+      <div><b>7,1 mi</b><span>visualizações em “Não é só Terminar”, com Panda</span></div>
+    </div>
+  </section>
+
+  <section class="m-sec">
+    <p class="m-eyebrow rev">Os projetos</p>
+    <h2 class="m-h2 rev">NuDoze <em>ao vivo</em></h2>
+    <figure class="m-foto rev"><img src="img/m-nudoze.webp" alt="Capa do projeto NuDoze ao vivo, com a música Não é só Terminar" width="960" height="540" loading="lazy"></figure>
+    <p class="m-nota rev">NuDoze (Ao Vivo): projeto gravado ao vivo no Toka Club, em São José dos Campos (SP).</p>
+    <p class="m-p rev">Sucessos gravados ao vivo e <b>clipes com milhões de visualizações.</b></p>
+    <ol class="m-lista rev">
+      <li><span class="n">1</span><div><b>Não é só Terminar</b><span>NuDoze ao vivo, com Panda · 7,1 mi de visualizações</span></div></li>
+      <li><span class="n">2</span><div><b>Fiel e Cheiroso</b><span>Clipe oficial, com Clayton &amp; Romário · 3 mi de visualizações</span></div></li>
+      <li><span class="n">3</span><div><b>Teste de Fidelidade</b><span>Clipe oficial, com Traia Véia · 1,4 mi de visualizações</span></div></li>
+    </ol>
+    <p class="m-nota rev">Canais oficiais: <a href="https://www.youtube.com/@fernandoefabiano" target="_blank" rel="noopener">YouTube</a> e <a href="https://www.instagram.com/fernandoefabiano/" target="_blank" rel="noopener">Instagram @fernandoefabiano</a></p>
+  </section>
+
+  <section class="m-sec">
+    <p class="m-eyebrow rev">O local</p>
+    <h2 class="m-h2 rev">Autentic <em>Lounge</em></h2>
+    <p class="m-sub rev" style="margin-top:10px">São Lourenço · Minas Gerais</p>
+    <figure class="m-foto rev"><img src="img/m-fachada.webp" alt="Fachada do Autentic Lounge à noite, com o letreiro iluminado" width="1400" height="788" loading="lazy"></figure>
+    <div class="m-cap rev"><b>1.500</b><span>pessoas de<br>capacidade</span></div>
+    <ul class="m-tags rev"><li>Salão amplo</li><li>Área VIP</li><li>Camarote</li><li>Ambiente climatizado</li><li>Painel de LED e iluminação cênica</li></ul>
+    <p class="m-nota rev">Av. Hercília Ferreira Pessoa, 435 · São Lourenço, MG · <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Herc%C3%ADlia+Ferreira+Pessoa+435+S%C3%A3o+Louren%C3%A7o+MG" target="_blank" rel="noopener">Ver no mapa</a> · <a href="https://www.instagram.com/autentic_lounge/" target="_blank" rel="noopener">@autentic_lounge</a></p>
+  </section>
+
+  <section class="m-sec">
+    <p class="m-eyebrow rev">Por que patrocinar</p>
+    <h2 class="m-h2 rev">Por que estar nessa <em>noite?</em></h2>
+    <ol class="m-lista rev">
+      <li><span class="n">01</span><div><b>Audiência de verdade</b><span>243 mil seguidores no Instagram e 221 mil inscritos no YouTube acompanham a dupla.</span></div></li>
+      <li><span class="n">02</span><div><b>Paixão nacional</b><span>O sertanejo é um dos gêneros mais ouvidos do Brasil, com um público fiel e apaixonado.</span></div></li>
+      <li><span class="n">03</span><div><b>Experiência ao vivo</b><span>Uma noite de alta energia ao vivo: público reunido, animado e aberto a viver a sua marca.</span></div></li>
+      <li><span class="n">04</span><div><b>Marca lembrada</b><span>Exposição em vários pontos (palco, divulgação e redes sociais) antes, durante e depois do show.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="m-sec">
+    <p class="m-eyebrow rev">Visibilidade</p>
+    <h2 class="m-h2 rev">Sua marca em <em>cada momento</em></h2>
+    <div class="m-fase rev"><em>Antes</em><h3>Divulgação</h3><ul><li>Logo na arte oficial do evento</li><li>Posts e stories nas redes</li><li>Material gráfico do show</li></ul></div>
+    <div class="m-fase rev"><em>Durante</em><h3>O show</h3><ul><li>Marca no palco e backdrop</li><li>Menções ao microfone</li><li>Ativação da marca no local</li></ul></div>
+    <div class="m-fase rev"><em>Depois</em><h3>Repercussão</h3><ul><li>Agradecimento da dupla</li><li>Registros do evento nas redes</li><li>Relacionamento com a marca</li></ul></div>
+  </section>
+
+  <section class="m-sec" id="m-cotas">
+    <p class="m-eyebrow rev">Cotas de patrocínio</p>
+    <h2 class="m-h2 rev">Escolha o seu lugar <em>na noite</em></h2>
+
+    <article class="m-plano ouro rev">
+      <header><div><h3>Ouro</h3><small>Cota master</small></div><div class="m-preco"><b>R$ 800,00</b><span>Investimento</span></div></header>
+      <dl>
+        <div><dt>Marca no palco / backdrop</dt><dd>Destaque principal</dd></div>
+        <div><dt>Menções ao microfone</dt><dd>Várias menções</dd></div>
+        <div><dt>Arte de divulgação do evento</dt><dd>Logo em destaque</dd></div>
+        <div><dt>Posts e stories nas redes</dt><dd>Post dedicado + stories</dd></div>
+        <div><dt>Entrevista da dupla na rádio</dt><dd>Divulgação ao vivo</dd></div>
+        <div><dt>Ativação da marca no local</dt><dd>Ação exclusiva</dd></div>
+        <div><dt>Convites cortesia</dt><dd>8 cortesias</dd></div>
+        <div><dt>Vídeo de agradecimento da dupla</dt><dd>Incluído</dd></div>
+      </dl>
+    </article>
+
+    <article class="m-plano prata rev">
+      <header><div><h3>Prata</h3><small>Cota premium</small></div><div class="m-preco"><b>R$ 500,00</b><span>Investimento</span></div></header>
+      <dl>
+        <div><dt>Marca no palco / backdrop</dt><dd>Logo</dd></div>
+        <div><dt>Menções ao microfone</dt><dd>Menções</dd></div>
+        <div><dt>Arte de divulgação do evento</dt><dd>Logo</dd></div>
+        <div><dt>Posts e stories nas redes</dt><dd>Stories</dd></div>
+        <div><dt>Entrevista da dupla na rádio</dt><dd class="nao">Não inclui</dd></div>
+        <div><dt>Ativação da marca no local</dt><dd>Ponto de presença</dd></div>
+        <div><dt>Convites cortesia</dt><dd>5 cortesias</dd></div>
+        <div><dt>Vídeo de agradecimento da dupla</dt><dd class="nao">Não inclui</dd></div>
+      </dl>
+    </article>
+
+    <article class="m-plano bronze rev">
+      <header><div><h3>Bronze</h3><small>Cota apoio</small></div><div class="m-preco"><b>R$ 300,00</b><span>Investimento</span></div></header>
+      <dl>
+        <div><dt>Marca no palco / backdrop</dt><dd class="nao">Não inclui</dd></div>
+        <div><dt>Menções ao microfone</dt><dd>Menção</dd></div>
+        <div><dt>Arte de divulgação do evento</dt><dd>Logo</dd></div>
+        <div><dt>Posts e stories nas redes</dt><dd>Citação</dd></div>
+        <div><dt>Entrevista da dupla na rádio</dt><dd class="nao">Não inclui</dd></div>
+        <div><dt>Ativação da marca no local</dt><dd class="nao">Não inclui</dd></div>
+        <div><dt>Convites cortesia</dt><dd>3 cortesias</dd></div>
+        <div><dt>Vídeo de agradecimento da dupla</dt><dd class="nao">Não inclui</dd></div>
+      </dl>
+    </article>
+
+    <p class="m-nota rev"><b style="color:var(--brasa-2);font-family:var(--cond);letter-spacing:.2em;text-transform:uppercase;font-size:13px">Permuta</b><br>Aceitamos permuta e criamos ações personalizadas para a sua marca. Vamos conversar.</p>
+  </section>
+
+  <section class="m-sec">
+    <p class="m-eyebrow rev">Diferencial do plano Ouro</p>
+    <h2 class="m-h2 rev">A dupla ao vivo na <em>rádio</em></h2>
+    <div class="m-pills rev"><span class="d">Ao vivo · Rádio local</span><span class="d">Exclusivo Ouro</span></div>
+    <p class="m-p rev">Antes do show, Fernando &amp; Fabiano participam de uma <b>entrevista ao vivo na rádio local da cidade</b> para falar do show e convidar o público para a noite de 19 de dezembro.</p>
+    <p class="m-p rev">A divulgação dos patrocinadores na entrevista é <b>exclusiva do plano Ouro.</b></p>
+    <div class="m-incl rev">
+      <div class="sim"><b>Ouro</b><span>Incluído</span></div>
+      <div><b>Prata</b><span>Não inclui</span></div>
+      <div><b>Bronze</b><span>Não inclui</span></div>
+    </div>
+    <ol class="m-lista rev">
+      <li><span class="n">01</span><div><span style="margin:0;color:var(--texto);font-size:16px">Bate-papo ao vivo com a dupla sobre o show e o projeto NuDoze.</span></div></li>
+      <li><span class="n">02</span><div><span style="margin:0;color:var(--texto);font-size:16px">Divulgação do show: 19/12, 21h, Autentic Lounge.</span></div></li>
+      <li><span class="n">03</span><div><span style="margin:0;color:var(--texto);font-size:16px">Citação dos patrocinadores do plano Ouro.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="m-sec">
+    <p class="m-eyebrow rev">Próximos passos</p>
+    <h2 class="m-h2 rev">Vamos fazer essa noite <em>juntos?</em></h2>
+    <ol class="m-lista rev">
+      <li><span class="n">01</span><div><span style="margin:0;color:var(--texto);font-size:17px">Escolha a cota que combina com a sua marca.</span></div></li>
+      <li><span class="n">02</span><div><span style="margin:0;color:var(--texto);font-size:17px">Alinhamos a ativação e os materiais.</span></div></li>
+      <li><span class="n">03</span><div><span style="margin:0;color:var(--texto);font-size:17px">Sua marca no palco em 19 de dezembro.</span></div></li>
+    </ol>
+    <p class="m-nota rev">Conheça a dupla: <a href="https://www.instagram.com/fernandoefabiano/" target="_blank" rel="noopener">@fernandoefabiano</a> · Instagram e canal oficial no <a href="https://www.youtube.com/@fernandoefabiano" target="_blank" rel="noopener">YouTube</a></p>
+  </section>
+
+  <section class="m-boreal">
+    <div class="m-sec" id="m-contato">
+      <svg class="m-logo" xmlns="http://www.w3.org/2000/svg" viewBox="-13.00 -13.00 583.00 180.10" role="img" aria-label="Boreal Produções"><defs><linearGradient id="gpm" gradientUnits="userSpaceOnUse" x1="0" y1="163.1" x2="557" y2="-12"><stop offset="0" stop-color="#19f7b2"/><stop offset=".5" stop-color="#1fc8ff"/><stop offset="1" stop-color="#8a5cff"/></linearGradient></defs><g fill="url(#gpm)" fill-rule="evenodd"><path d="M2,100c-1.10457,0 -2,-0.89543 -2,-2c0,0 0,-19 0,-19v-77c0,-1.10457 0.89543,-2 2,-2h15.5c0.12482,0 0.24697,0.01143 0.36546,0.03331c0.37535,-0.02211 0.75364,-0.03331 1.13454,-0.03331h46c10.49341,0 19,8.50659 19,19v21.75c0,2.9765 -0.68444,5.79313 -1.90451,8.30112c2.45806,3.43857 3.90451,7.64981 3.90451,12.19888v17.75c0,11.59798 -9.40202,21 -21,21h-44c-0.91148,0 -1.80939,-0.05807 -2.69025,-0.17071c-0.24755,0.10974 -0.52153,0.17071 -0.80975,0.17071zM57.5,40.25c3.86599,0 7,-3.13401 7,-7v-6.75c0,-3.86599 -3.13401,-7 -7,-7h-31c-3.86599,0 -7,3.13401 -7,7v6.75c0,3.86599 3.13401,7 7,7zM58.5,80.5c4.41828,0 8,-3.58172 8,-8v-4.75c0,-4.41828 -3.58172,-8 -8,-8h-31c-4.41828,0 -8,3.58172 -8,8v4.75c0,4.41828 3.58172,8 8,8zM135,100c-19.88225,0 -36,-16.11775 -36,-36v-28c0,-19.88225 16.11775,-36 36,-36h26c19.88225,0 36,16.11775 36,36v28c0,19.88225 -16.11775,36 -36,36zM161.5,80.5c8.28427,0 15,-6.71573 15,-15v-31c0,-8.28427 -6.71573,-15 -15,-15h-27c-8.28427,0 -15,6.71573 -15,15v31c0,8.28427 6.71573,15 15,15zM211,100c-1.10457,0 -2,-0.89543 -2,-2v-96c0,-1.10457 0.89543,-2 2,-2h15.5c0.12482,0 0.24697,0.01143 0.36546,0.03331c0.37535,-0.02211 0.75364,-0.03331 1.13454,-0.03331h44c10.49341,0 19,8.50659 19,19v21.75c0,8.87364 -6.08311,16.32649 -14.30668,18.41591l20.30668,40.83409h-29l-18.27568,-40.25h-21.22432v38.25c0,1.10457 -0.89543,2 -2,2zM264.5,40.25c3.86599,0 7,-3.13401 7,-7v-6.75c0,-3.86599 -3.13401,-7 -7,-7h-29c-3.86599,0 -7,3.13401 -7,7v6.75c0,3.86599 3.13401,7 7,7zM310,57.75c0,0 0,0 0,0v-55.75c0,-1.10457 0.89543,-2 2,-2h66c1.10457,0 2,0.89543 2,2v15.5c0,1.10457 -0.89543,2 -2,2l-48.5,0v20.75h40.5c1.10457,0 2,0.89543 2,2v15.5c0,1.10457 -0.89543,2 -2,2l-40.5,0v20.75h48.5c1.10457,0 2,0.89543 2,2v15.5c0,1.10457 -0.89543,2 -2,2h-66c-1.10457,0 -2,-0.89543 -2,-2c0,0 0,-40.25 0,-40.25zM386,100l37,-100h26l37,100l-22.35543,0l-27.64457,-77.77778l-27.64457,77.77778zM426.8,60h18.4l5.58,15.5h-29.56zM491,2c0,-1.10457 0.89543,-2 2,-2h15.5c1.10457,0 2,0.89543 2,2v78.5h44.5c1.10457,0 2,0.89543 2,2v15.5c0,1.10457 -0.89543,2 -2,2h-62c-1.10457,0 -2,-0.89543 -2,-2z"/><g transform="translate(0,146)"><path d="M3 0L0 0L0-24L16.063-24Q19.578-24 21.727-23.656Q23.875-23.313 24.984-22.508Q26.094-21.703 26.484-20.336Q26.875-18.969 26.875-16.938L26.875-16.938L26.875-16.313Q26.875-14.375 26.477-13.023Q26.078-11.672 24.938-10.844Q23.797-10.016 21.641-9.633Q19.484-9.250 15.969-9.250L15.969-9.250L3-9.250L3 0ZM23.875-16.313L23.875-16.938Q23.875-18.422 23.594-19.313Q23.313-20.203 22.469-20.656Q21.625-21.109 19.953-21.258Q18.281-21.406 15.484-21.406L15.484-21.406L3-21.406L3-11.844L15.484-11.844Q18.281-11.844 19.953-12.023Q21.625-12.203 22.469-12.680Q23.313-13.156 23.594-14.039Q23.875-14.922 23.875-16.313L23.875-16.313ZM64.748 0L64.748-24L80.811-24Q84.326-24 86.475-23.688Q88.623-23.375 89.732-22.609Q90.842-21.844 91.232-20.516Q91.623-19.188 91.623-17.156L91.623-17.156L91.623-16.531Q91.623-14.656 91.178-13.305Q90.732-11.953 89.467-11.117Q88.201-10.281 85.717-9.938L85.717-9.938L90.936 0L87.936 0L82.826-9.719Q82.514-9.703 82.178-9.703Q81.842-9.703 81.482-9.703L81.482-9.703L67.748-9.703L67.748 0L64.748 0ZM67.748-21.406L67.748-12.297L81.014-12.297Q83.686-12.297 85.225-12.477Q86.764-12.656 87.490-13.109Q88.217-13.563 88.420-14.391Q88.623-15.219 88.623-16.531L88.623-16.531L88.623-17.156Q88.623-18.641 88.342-19.500Q88.061-20.359 87.217-20.766Q86.373-21.172 84.701-21.289Q83.029-21.406 80.232-21.406L80.232-21.406L67.748-21.406ZM147.402 0.500L141.105 0.500Q137.590 0.500 135.324 0.023Q133.059-0.453 131.785-1.734Q130.512-3.016 130.004-5.422Q129.496-7.828 129.496-11.688L129.496-11.688L129.496-12.313Q129.496-15.500 129.809-17.664Q130.121-19.828 130.887-21.188Q131.652-22.547 132.973-23.266Q134.293-23.984 136.293-24.242Q138.293-24.500 141.105-24.500L141.105-24.500L147.402-24.500Q150.215-24.500 152.215-24.242Q154.215-23.984 155.535-23.266Q156.855-22.547 157.621-21.188Q158.387-19.828 158.699-17.664Q159.012-15.500 159.012-12.313L159.012-12.313L159.012-11.688Q159.012-7.828 158.504-5.422Q157.996-3.016 156.723-1.734Q155.449-0.453 153.184 0.023Q150.918 0.500 147.402 0.500L147.402 0.500ZM141.105-2.094L141.105-2.094L147.402-2.094Q149.637-2.094 151.168-2.250Q152.699-2.406 153.660-2.922Q154.621-3.438 155.129-4.484Q155.637-5.531 155.824-7.281Q156.012-9.031 156.012-11.688L156.012-11.688L156.012-12.313Q156.012-15.063 155.824-16.844Q155.637-18.625 155.129-19.656Q154.621-20.688 153.660-21.164Q152.699-21.641 151.168-21.773Q149.637-21.906 147.402-21.906L147.402-21.906L141.105-21.906Q138.871-21.906 137.340-21.773Q135.809-21.641 134.848-21.164Q133.887-20.688 133.379-19.656Q132.871-18.625 132.684-16.844Q132.496-15.063 132.496-12.313L132.496-12.313L132.496-11.688Q132.496-9.031 132.684-7.281Q132.871-5.531 133.379-4.484Q133.887-3.438 134.848-2.922Q135.809-2.406 137.340-2.250Q138.871-2.094 141.105-2.094ZM214.697 0L196.885 0L196.885-24L214.697-24Q218.213-24 220.479-23.578Q222.744-23.156 224.018-21.945Q225.291-20.734 225.799-18.422Q226.307-16.109 226.307-12.313L226.307-12.313L226.307-11.688Q226.307-8.016 225.799-5.711Q225.291-3.406 224.018-2.164Q222.744-0.922 220.479-0.461Q218.213 0 214.697 0L214.697 0ZM199.885-21.406L199.885-2.594L214.697-2.594Q217.494-2.594 219.197-2.859Q220.900-3.125 221.791-4.016Q222.682-4.906 222.994-6.734Q223.307-8.563 223.307-11.688L223.307-11.688L223.307-12.313Q223.307-14.906 223.119-16.594Q222.932-18.281 222.424-19.258Q221.916-20.234 220.955-20.695Q219.994-21.156 218.463-21.281Q216.932-21.406 214.697-21.406L214.697-21.406L199.885-21.406ZM281.445 0.500L275.789 0.500Q272.273 0.500 270.008 0.023Q267.742-0.453 266.469-1.734Q265.195-3.016 264.688-5.422Q264.180-7.828 264.180-11.688L264.180-11.688L264.180-24L267.180-24L267.180-11.688Q267.180-9.031 267.367-7.281Q267.555-5.531 268.070-4.484Q268.586-3.438 269.547-2.922Q270.508-2.406 272.039-2.250Q273.570-2.094 275.789-2.094L275.789-2.094L281.445-2.094Q283.680-2.094 285.203-2.250Q286.727-2.406 287.688-2.922Q288.648-3.438 289.164-4.484Q289.680-5.531 289.867-7.281Q290.055-9.031 290.055-11.688L290.055-11.688L290.055-24L293.055-24L293.055-11.688Q293.055-7.828 292.547-5.422Q292.039-3.016 290.766-1.734Q289.492-0.453 287.227 0.023Q284.961 0.500 281.445 0.500L281.445 0.500ZM330.928-11.688L330.928-11.688L330.928-12.313Q330.928-15.500 331.240-17.664Q331.553-19.828 332.318-21.188Q333.084-22.547 334.404-23.266Q335.725-23.984 337.725-24.242Q339.725-24.500 342.537-24.500L342.537-24.500L348.834-24.500Q352.053-24.500 354.264-24.195Q356.475-23.891 357.826-22.992Q359.178-22.094 359.787-20.352Q360.396-18.609 360.396-15.734L360.396-15.734L357.396-15.734Q357.396-18 356.990-19.258Q356.584-20.516 355.623-21.078Q354.662-21.641 353.006-21.773Q351.350-21.906 348.834-21.906L348.834-21.906L342.537-21.906Q340.303-21.906 338.771-21.773Q337.240-21.641 336.279-21.164Q335.318-20.688 334.811-19.656Q334.303-18.625 334.115-16.844Q333.928-15.063 333.928-12.313L333.928-12.313L333.928-11.688Q333.928-9.031 334.115-7.281Q334.303-5.531 334.811-4.484Q335.318-3.438 336.279-2.922Q337.240-2.406 338.771-2.250Q340.303-2.094 342.537-2.094L342.537-2.094L348.834-2.094Q351.350-2.094 353.006-2.203Q354.662-2.313 355.623-2.844Q356.584-3.375 356.990-4.617Q357.396-5.859 357.396-8.109L357.396-8.109L360.396-8.109Q360.396-5.234 359.787-3.516Q359.178-1.797 357.826-0.930Q356.475-0.063 354.264 0.219Q352.053 0.500 348.834 0.500L348.834 0.500L342.537 0.500Q339.021 0.500 336.756 0.023Q334.490-0.453 333.217-1.734Q331.943-3.016 331.436-5.422Q330.928-7.828 330.928-11.688ZM343.975 8.500L343.975 8.500L343.975 6Q344.693 6 345.381 5.922Q346.068 5.844 346.521 5.563Q346.975 5.281 346.975 4.688L346.975 4.688Q346.975 3.953 346.146 3.727Q345.318 3.500 343.975 3.500L343.975 3.500L343.975-1L345.975-1L345.975 2Q347.975 2 348.975 2.680Q349.975 3.359 349.975 4.969L349.975 4.969Q349.975 6.328 349.217 7.102Q348.459 7.875 347.107 8.188Q345.756 8.500 343.975 8.500ZM416.176 0.500L409.879 0.500Q406.363 0.500 404.098 0.023Q401.832-0.453 400.559-1.734Q399.285-3.016 398.777-5.422Q398.270-7.828 398.270-11.688L398.270-11.688L398.270-12.313Q398.270-15.500 398.582-17.664Q398.895-19.828 399.660-21.188Q400.426-22.547 401.746-23.266Q403.066-23.984 405.066-24.242Q407.066-24.500 409.879-24.500L409.879-24.500L416.176-24.500Q418.988-24.500 420.988-24.242Q422.988-23.984 424.309-23.266Q425.629-22.547 426.395-21.188Q427.160-19.828 427.473-17.664Q427.785-15.500 427.785-12.313L427.785-12.313L427.785-11.688Q427.785-7.828 427.277-5.422Q426.770-3.016 425.496-1.734Q424.223-0.453 421.957 0.023Q419.691 0.500 416.176 0.500L416.176 0.500ZM409.879-2.094L409.879-2.094L416.176-2.094Q418.410-2.094 419.941-2.250Q421.473-2.406 422.434-2.922Q423.395-3.438 423.902-4.484Q424.410-5.531 424.598-7.281Q424.785-9.031 424.785-11.688L424.785-11.688L424.785-12.313Q424.785-15.063 424.598-16.844Q424.410-18.625 423.902-19.656Q423.395-20.688 422.434-21.164Q421.473-21.641 419.941-21.773Q418.410-21.906 416.176-21.906L416.176-21.906L409.879-21.906Q407.645-21.906 406.113-21.773Q404.582-21.641 403.621-21.164Q402.660-20.688 402.152-19.656Q401.645-18.625 401.457-16.844Q401.270-15.063 401.270-12.313L401.270-12.313L401.270-11.688Q401.270-9.031 401.457-7.281Q401.645-5.531 402.152-4.484Q402.660-3.438 403.621-2.922Q404.582-2.406 406.113-2.250Q407.645-2.094 409.879-2.094ZM409.035-26.969L406.035-26.969Q406.035-28.906 407.184-29.945Q408.332-30.984 410.035-30.984L410.035-30.984Q411.660-30.984 413.457-30.219L413.457-30.219Q413.973-30 414.582-29.734Q415.191-29.469 415.816-29.469L415.816-29.469Q416.566-29.469 416.801-29.758Q417.035-30.047 417.035-30.969L417.035-30.969L420.035-30.969Q420.035-28.891 418.598-27.813L418.598-27.813Q417.473-26.969 416.035-26.969L416.035-26.969Q414.395-26.969 412.613-27.719L412.613-27.719Q412.098-27.938 411.488-28.203Q410.879-28.469 410.254-28.469L410.254-28.469Q409.457-28.469 409.246-28.180Q409.035-27.891 409.035-26.969L409.035-26.969ZM489.658 0L465.658 0L465.658-24L489.221-24L489.221-21.500L468.658-21.500L468.658-13.500L488.361-13.500L488.361-11L468.658-11L468.658-2.500L489.658-2.500L489.658 0ZM554-6.938L554-6.938Q554-8.328 553.781-9.125Q553.563-9.922 552.797-10.305Q552.031-10.688 550.422-10.805Q548.813-10.922 546.016-10.969L546.016-10.969L537.328-11.094Q534.109-11.141 532.156-11.484Q530.203-11.828 529.203-12.570Q528.203-13.313 527.867-14.563Q527.531-15.813 527.531-17.688L527.531-17.688Q527.531-19.734 527.992-21.063Q528.453-22.391 529.664-23.141Q530.875-23.891 533.094-24.195Q535.313-24.500 538.828-24.500L538.828-24.500L545.516-24.500Q548.703-24.500 550.828-24.297Q552.953-24.094 554.203-23.359Q555.453-22.625 555.992-21.078Q556.531-19.531 556.531-16.828L556.531-16.828L553.531-16.828Q553.531-18.922 553.133-19.992Q552.734-21.063 551.820-21.453Q550.906-21.844 549.359-21.875Q547.813-21.906 545.516-21.906L545.516-21.906L538.984-21.906Q536.188-21.906 534.508-21.797Q532.828-21.688 531.969-21.297Q531.109-20.906 530.820-20.047Q530.531-19.188 530.531-17.688L530.531-17.688Q530.531-16.422 530.734-15.656Q530.938-14.891 531.648-14.492Q532.359-14.094 533.844-13.945Q535.328-13.797 537.891-13.766L537.891-13.766L547.203-13.641Q550.484-13.594 552.445-13.258Q554.406-12.922 555.383-12.172Q556.359-11.422 556.680-10.148Q557-8.875 557-6.938L557-6.938Q557-4.828 556.602-3.398Q556.203-1.969 555.063-1.109Q553.922-0.250 551.766 0.125Q549.609 0.500 546.094 0.500L546.094 0.500L538.781 0.500Q535.578 0.500 533.406 0.219Q531.234-0.063 529.945-0.914Q528.656-1.766 528.094-3.453Q527.531-5.141 527.531-7.953L527.531-7.953L530.531-7.953Q530.531-5.750 530.891-4.547Q531.250-3.344 532.148-2.820Q533.047-2.297 534.664-2.195Q536.281-2.094 538.781-2.094L538.781-2.094L545.938-2.094Q548.734-2.094 550.359-2.273Q551.984-2.453 552.766-2.961Q553.547-3.469 553.773-4.422Q554-5.375 554-6.938Z" stroke="url(#gpm)" stroke-width="0.55" stroke-linejoin="round" fill-rule="nonzero"/></g></g></svg>
+      <p class="m-eyebrow rev">Sobre a Boreal</p>
+      <h2 class="m-h2 rev">Festas e shows feitos para o <em>Brasil inteiro</em></h2>
+      <p class="m-p rev"><b>A Boreal Produções</b> nasce para criar noites que ninguém esquece: palco, luz, som e marca trabalhando juntos, do primeiro convite à última música. Nosso objetivo é levar festas e shows de alto nível a todo o país.</p>
+      <img class="m-bshow rev" src="img/m-boreal-show.webp" alt="Show com a marca Boreal no palco" width="1200" height="900" loading="lazy">
+      <div class="m-bfotos rev">
+        <img src="img/m-boreal-lounge.webp" alt="Lounge com a marca Boreal" width="800" height="600" loading="lazy">
+        <img src="img/m-boreal-entrada.webp" alt="Entrada de evento com a marca Boreal" width="800" height="600" loading="lazy">
+      </div>
+      <ul class="m-pilares rev">
+        <li><b>Shows</b><span>Produção com padrão profissional.</span></li>
+        <li><b>Festas</b><span>Noites pensadas do convite à pista.</span></li>
+        <li><b>Marcas</b><span>Patrocinadores perto do público certo.</span></li>
+      </ul>
+      <div class="m-contato rev">
+        <small>Responsável</small>
+        <h3>Eduardo Baroni</h3>
+        <div class="m-btns">
+          <a class="m-btn prim zap" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm5.7 14.03c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.12.07-1.8-.11-.42-.13-.95-.31-1.64-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.51.25.6.85 2.08.93 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.09 1.31 2.39 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.7-.17 1.38z"/></svg>Chamar no WhatsApp</a>
+          <a class="m-btn" href="https://instagram.com/baroniedu" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>@baroniedu</a>
+        </div>
+        <ul class="m-dados">
+          <li><span>WhatsApp</span><b>(21) 96799-1111</b></li>
+          <li><span>E-mail</span><b id="email">baroni@tutamail.com</b><button type="button" id="copiar">Copiar</button></li>
+        </ul>
+      </div>
+      <p class="m-fim">Fernando &amp; Fabiano · Ao vivo<br>19.12 · 21h · Autentic Lounge</p>
+    </div>
+  </section>
+</main>
+
+<a class="whats zap" id="whats" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm5.7 14.03c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.12.07-1.8-.11-.42-.13-.95-.31-1.64-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.51.25.6.85 2.08.93 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.09 1.31 2.39 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.7-.17 1.38z"/></svg>WhatsApp</a>
 
 <audio id="musica" src="audio/fiel-e-cheiroso.mp3" loop preload="auto" playsinline></audio>
 
@@ -215,15 +494,14 @@ main{display:block}
 (function(){
   var $ = function(id){ return document.getElementById(id); };
   var audio = $('musica'), entrada = $('entrada'), btnSom = $('som');
+  var cel = window.matchMedia('(max-width: 860px), (orientation: portrait) and (max-width: 1100px)');
   var quadros = [].slice.call(document.querySelectorAll('.slide'));
   var total = quadros.length, atual = 1, aberto = false, querTocar = false, desligadoPeloUsuario = false;
-  var retrato = window.matchMedia('(orientation: portrait)');
   var zap = 'https://wa.me/5521967991111?text=' + encodeURIComponent('Olá, Eduardo! Vi a proposta de patrocínio do show de Fernando & Fabiano (19/12, Autentic Lounge) e gostaria de saber mais.');
-  $('zap').href = zap; $('whats').href = zap; $('total').textContent = pad(total);
+  [].forEach.call(document.querySelectorAll('.zap'), function(a){ a.href = zap; });
+  $('total').textContent = pad(total);
 
   function pad(n){ return n < 10 ? '0' + n : '' + n; }
-  function dica(texto, ms){ var d = $('dica'); d.textContent = texto; d.classList.add('mostra'); clearTimeout(dica.t); dica.t = setTimeout(function(){ d.classList.remove('mostra'); }, ms || 3800); }
-
   function mostrarSom(tocando){
     btnSom.classList.toggle('tocando', tocando);
     btnSom.setAttribute('aria-pressed', tocando ? 'true' : 'false');
@@ -241,7 +519,6 @@ main{display:block}
     entrada.classList.add('saindo');
     setTimeout(function(){ entrada.hidden = true; }, 950);
     window.scrollTo(0, 0); agendar();
-    if (retrato.matches) setTimeout(function(){ dica('Toque no slide para ampliar'); }, 1400);
   }
   entrada.addEventListener('click', abrir);
   entrada.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(); } });
@@ -255,41 +532,54 @@ main{display:block}
     else if (querTocar && !desligadoPeloUsuario && aberto) tocar();
   });
 
-  /* aparecer, contador e barra de progresso */
+  /* aparecer ao rolar (só o que está abaixo da primeira tela) */
   var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('vista'); });
-  }, { threshold: .12 });
-  quadros.forEach(function(q){ io.observe(q); });
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.remove('pre'); io.unobserve(e.target); } });
+  }, { threshold: .1 });
+  [].forEach.call(document.querySelectorAll('.slide, .rev'), function(el){
+    if (el.offsetParent !== null && el.getBoundingClientRect().top > window.innerHeight) el.classList.add('pre');
+    io.observe(el);
+  });
+
+  /* progresso, contador e botão de WhatsApp */
   var medindo = false;
   function medir(){
     medindo = false;
-    var meio = window.innerHeight / 2, melhor = 0, dist = Infinity;
-    quadros.forEach(function(q, i){ var r = q.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - meio); if (d < dist){ dist = d; melhor = i; } });
-    var noFecho = $('contato').getBoundingClientRect().top < window.innerHeight * .6;
-    atual = noFecho ? total : melhor + 1;
-    $('atual').textContent = pad(atual); $('barra').style.width = (atual / total * 100) + '%';
-    $('whats').classList.toggle('mostra', aberto && atual >= 8 && !noFecho);
+    var h = window.innerHeight, mostra = false;
+    if (cel.matches){
+      var max = document.documentElement.scrollHeight - h;
+      $('barra').style.width = (max > 0 ? Math.min(100, window.scrollY / max * 100) : 0) + '%';
+      var a = $('m-cotas').getBoundingClientRect().top, b = $('m-contato').getBoundingClientRect().top;
+      mostra = aberto && a < h * .5 && b > h * .9;
+    } else {
+      var meio = h / 2, melhor = 0, dist = Infinity;
+      quadros.forEach(function(q, i){ var r = q.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - meio); if (d < dist){ dist = d; melhor = i; } });
+      var noFecho = $('contato').getBoundingClientRect().top < h * .6;
+      atual = noFecho ? total : melhor + 1;
+      $('atual').textContent = pad(atual); $('barra').style.width = (atual / total * 100) + '%';
+      mostra = aberto && atual >= 8 && !noFecho;
+    }
+    $('whats').classList.toggle('mostra', mostra);
   }
   function agendar(){ if (!medindo){ medindo = true; requestAnimationFrame(medir); } }
   window.addEventListener('scroll', agendar, { passive: true });
   window.addEventListener('resize', agendar);
 
-  /* ampliar */
-  var luz = $('luz'), luzImg = $('luzImg'), indice = 0;
-  function ver(i){ indice = (i + total) % total; luzImg.src = 'slides/s' + pad(indice + 1) + '.jpg'; luzImg.alt = quadros[indice].querySelector('img').alt; }
-  function abrirLuz(i){ ver(i); luz.hidden = false; $('whats').style.visibility = 'hidden'; }
-  function fecharLuz(){ luz.hidden = true; $('whats').style.visibility = ''; quadros[indice].scrollIntoView({ block: 'center' }); }
-  quadros.forEach(function(q, i){ q.addEventListener('click', function(){ if (retrato.matches || window.innerWidth < 700) abrirLuz(i); }); });
-  $('fechar').addEventListener('click', fecharLuz);
-  $('ant').addEventListener('click', function(){ ver(indice - 1); });
-  $('prox').addEventListener('click', function(){ ver(indice + 1); });
+  /* copiar e-mail */
+  $('copiar').addEventListener('click', function(){
+    var b = this, el = $('email');
+    function ok(){ b.textContent = 'Copiado'; setTimeout(function(){ b.textContent = 'Copiar'; }, 2000); }
+    function selecionar(){ var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selecionado'; }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(el.textContent).then(ok, selecionar); else selecionar();
+  });
+
+  /* teclado no PC */
   document.addEventListener('keydown', function(e){
-    if (!luz.hidden){ if (e.key === 'Escape') fecharLuz(); if (e.key === 'ArrowLeft') ver(indice - 1); if (e.key === 'ArrowRight') ver(indice + 1); return; }
-    if (!aberto) return;
+    if (!aberto || cel.matches) return;
+    function irPara(i){ if (i < 0) i = 0; if (i >= total){ $('contato').scrollIntoView({ behavior: 'smooth' }); return; } quadros[i].scrollIntoView({ behavior: 'smooth', block: 'center' }); }
     if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === 'ArrowRight'){ e.preventDefault(); irPara(atual); }
     if (e.key === 'ArrowUp' || e.key === 'PageUp' || e.key === 'ArrowLeft'){ e.preventDefault(); irPara(atual - 2); }
   });
-  function irPara(i){ if (i < 0) i = 0; if (i >= total){ $('contato').scrollIntoView({ behavior: 'smooth' }); return; } quadros[i].scrollIntoView({ behavior: 'smooth', block: 'center' }); }
 })();
 </script>
 </body>
