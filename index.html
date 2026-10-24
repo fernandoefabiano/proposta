@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fernando &amp; Fabiano · Proposta de Patrocínio</title>
+<meta name="description" content="Proposta de patrocínio do show ao vivo de Fernando &amp; Fabiano · sábado, 19 de dezembro, 21h · Autentic Lounge, São Lourenço (MG).">
+<meta name="theme-color" content="#090a1b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fernando &amp; Fabiano · Proposta de Patrocínio">
+<meta property="og:description" content="Show ao vivo · 19 de dezembro · 21h · Autentic Lounge, São Lourenço (MG). Toque para abrir a proposta.">
+<meta property="og:image" content="https://fernandoefabiano.github.io/proposta/slides/s01.jpg">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta property="og:url" content="https://fernandoefabiano.github.io/proposta/">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://fernandoefabiano.github.io/proposta/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23090a1b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ff8f3a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fundo:#090a1b; --fundo-2:#10122b; --texto:#f6f1fa; --texto-2:#a9a6c4;
+  --brasa:#ff8f3a; --brasa-2:#ffb066; --violeta:#6e46ff; --linha:rgba(255,255,255,.10);
+  --serif:'Cinzel','Trajan Pro',Georgia,serif;
+  --cond:'Barlow Condensed','Arial Narrow',Arial,sans-serif;
+  --corpo:'Barlow',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{color-scheme:dark;background:var(--fundo);-webkit-text-size-adjust:100%}
+body{background:var(--fundo);color:var(--texto);font-family:var(--corpo);min-height:100dvh;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+body.travado{overflow:hidden;height:100dvh}
+button,a{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--brasa-2);outline-offset:3px}
+
+/* ---------- tela de entrada ---------- */
+.entrada{position:fixed;inset:0;z-index:60;display:flex;align-items:center;overflow:hidden;cursor:pointer;
+  padding:clamp(24px,5vw,88px);padding-bottom:max(clamp(24px,5vw,88px),env(safe-area-inset-bottom));
+  background:
+    radial-gradient(900px 640px at 82% 12%,rgba(255,143,58,.24),transparent 62%),
+    radial-gradient(900px 760px at -5% 105%,rgba(110,70,255,.34),transparent 62%),
+    var(--fundo);
+  transition:opacity .9s ease,visibility .9s ease,transform .9s ease}
+.entrada.saindo{opacity:0;visibility:hidden;transform:scale(1.03)}
+.entrada .dupla{position:absolute;right:-2vw;bottom:0;height:96dvh;width:min(64vw,96dvh);object-fit:contain;object-position:right bottom;
+  filter:drop-shadow(0 30px 60px rgba(0,0,0,.55));animation:chega 1.6s cubic-bezier(.2,.7,.2,1) both;pointer-events:none}
+.entrada::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,var(--fundo) 0%,rgba(9,10,27,.86) 30%,rgba(9,10,27,0) 62%)}
+.entrada .conteudo{position:relative;z-index:2;max-width:min(680px,92vw);animation:sobe 1.1s .2s cubic-bezier(.2,.7,.2,1) both}
+.sobretitulo{display:flex;align-items:center;gap:14px;font:600 clamp(13px,1.3vw,18px)/1 var(--cond);letter-spacing:.34em;text-transform:uppercase;color:var(--brasa)}
+.sobretitulo::before{content:"";width:46px;height:2px;background:var(--brasa)}
+.nome{margin-top:clamp(16px,2.4vw,30px);font:500 clamp(46px,8.4vw,128px)/.98 var(--serif);letter-spacing:.01em}
+.nome em{font-style:normal;color:var(--brasa)}
+.sub{margin-top:clamp(14px,1.8vw,24px);font:500 clamp(15px,1.7vw,24px)/1.35 var(--cond);letter-spacing:.14em;text-transform:uppercase;color:var(--texto-2)}
+.sub b{color:var(--texto);font-weight:600}
+.cta{position:relative;display:inline-flex;align-items:center;gap:14px;margin-top:clamp(28px,4vw,52px);padding:20px 34px 20px 26px;border-radius:999px;
+  background:linear-gradient(135deg,var(--brasa-2),var(--brasa) 55%,#ff6a1f);color:#1a0c02;
+  font:700 clamp(17px,1.9vw,22px)/1 var(--cond);letter-spacing:.22em;text-transform:uppercase;box-shadow:0 14px 40px rgba(255,120,30,.38)}
+.cta svg{width:26px;height:26px;flex:none}
+.cta::before,.cta::after{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid var(--brasa-2);opacity:0;animation:pulso 2.4s ease-out infinite}
+.cta::after{animation-delay:1.2s}
+.aviso{margin-top:16px;font:400 14px/1.4 var(--corpo);color:var(--texto-2);letter-spacing:.02em}
+
+@keyframes pulso{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.35,1.9);opacity:0}}
+@keyframes sobe{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes chega{from{opacity:0;transform:translateX(5vw) scale(1.03)}to{opacity:1;transform:none}}
+
+/* ---------- proposta ---------- */
+.topo{position:fixed;inset:0 0 auto 0;z-index:30;height:3px;background:rgba(255,255,255,.07)}
+.topo i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--violeta),var(--brasa));transition:width .25s}
+.contador{position:fixed;top:max(14px,env(safe-area-inset-top));left:14px;z-index:30;padding:7px 12px;border-radius:999px;
+  background:rgba(9,10,27,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--linha);
+  font:600 14px/1 var(--cond);letter-spacing:.16em;color:var(--texto-2)}
+.contador b{color:var(--brasa);font-weight:700}
+.som{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));z-index:40;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(16,18,43,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,143,58,.55);box-shadow:0 8px 28px rgba(0,0,0,.45)}
+.som svg{width:24px;height:24px;color:var(--brasa-2)}
+.som .eq{display:none;gap:3px;align-items:flex-end;height:20px}
+.som .eq i{width:3.5px;border-radius:2px;background:var(--brasa-2);height:100%;transform-origin:bottom;animation:eq 1s ease-in-out infinite}
+.som .eq i:nth-child(2){animation-delay:-.35s}.som .eq i:nth-child(3){animation-delay:-.7s}.som .eq i:nth-child(4){animation-delay:-.15s}
+.som.tocando .eq{display:flex}.som.tocando .ico{display:none}
+@keyframes eq{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
+
+main{display:block}
+.quadro{display:grid;place-items:center;padding:0}
+.slide{display:block;position:relative;width:min(100vw,calc(100dvh*16/9));aspect-ratio:16/9;background:var(--fundo-2);cursor:zoom-in;
+  opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.slide.vista{opacity:1;transform:none}
+.slide img{display:block;width:100%;height:100%;object-fit:cover}
+@media (orientation:landscape) and (min-width:700px){
+  main{scroll-snap-type:y proximity}
+  .quadro{min-height:100dvh;scroll-snap-align:center}
+  .slide{cursor:default}
+}
+@media (orientation:portrait),(max-width:699px){
+  .quadro{padding:7px 0}
+  .slide{box-shadow:0 10px 30px rgba(0,0,0,.45)}
+  main{padding-top:56px}
+}
+
+.fecho{padding:clamp(48px,8vw,110px) 22px calc(clamp(70px,9vw,120px) + env(safe-area-inset-bottom));text-align:center;
+  background:radial-gradient(700px 360px at 50% 0,rgba(255,143,58,.16),transparent 70%)}
+.fecho h2{font:500 clamp(30px,5.4vw,64px)/1.05 var(--serif)}
+.fecho h2 em{font-style:normal;color:var(--brasa)}
+.fecho p{margin:18px auto 0;max-width:520px;color:var(--texto-2);font-size:clamp(15px,1.6vw,18px);line-height:1.5}
+.botoes{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:30px}
+.botoes a{display:inline-flex;align-items:center;gap:10px;padding:16px 24px;border-radius:999px;text-decoration:none;
+  font:700 clamp(15px,1.6vw,18px)/1 var(--cond);letter-spacing:.16em;text-transform:uppercase;border:1.5px solid rgba(255,143,58,.6);background:rgba(255,143,58,.08)}
+.botoes a.principal{background:linear-gradient(135deg,var(--brasa-2),var(--brasa) 55%,#ff6a1f);color:#1a0c02;border-color:transparent;box-shadow:0 12px 34px rgba(255,120,30,.32)}
+.botoes svg{width:20px;height:20px}
+.rodape{margin-top:46px;font:500 13px/1.6 var(--cond);letter-spacing:.2em;text-transform:uppercase;color:#6f6c91}
+
+.whats{position:fixed;left:14px;bottom:max(14px,env(safe-area-inset-bottom));z-index:40;display:inline-flex;align-items:center;gap:9px;padding:14px 20px 14px 16px;border-radius:999px;text-decoration:none;
+  background:linear-gradient(135deg,var(--brasa-2),var(--brasa) 55%,#ff6a1f);color:#1a0c02;font:700 15px/1 var(--cond);letter-spacing:.16em;text-transform:uppercase;
+  box-shadow:0 10px 30px rgba(255,120,30,.4);transform:translateY(140%);opacity:0;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .4s}
+.whats.mostra{transform:none;opacity:1}
+.whats svg{width:20px;height:20px}
+
+/* ---------- ampliar slide (celular em pé: gira o slide para ocupar a tela) ---------- */
+.luz{position:fixed;inset:0;z-index:80;background:#000;display:grid;place-items:center;animation:aparece .25s ease both}
+.luz[hidden]{display:none}
+.luz img{position:absolute;top:50%;left:50%;width:100vw;height:100dvh;object-fit:contain;transform:translate(-50%,-50%)}
+@media (orientation:portrait){.luz img{width:100dvh;height:100vw;transform:translate(-50%,-50%) rotate(90deg)}}
+.luz button{position:absolute;z-index:2;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:26px;line-height:1}
+.luz .fechar{top:max(14px,env(safe-area-inset-top));right:14px}
+.luz .ant,.luz .prox{bottom:max(18px,env(safe-area-inset-bottom))}
+.luz .ant{left:calc(50% - 62px)}.luz .prox{left:calc(50% + 12px)}
+@media (orientation:landscape){.luz .ant,.luz .prox{bottom:auto;top:calc(50% - 25px)}.luz .ant{left:14px}.luz .prox{left:auto;right:14px}}
+@keyframes aparece{from{opacity:0}to{opacity:1}}
+
+.dica{position:fixed;left:50%;bottom:max(80px,calc(env(safe-area-inset-bottom) + 76px));z-index:45;transform:translate(-50%,10px);opacity:0;pointer-events:none;
+  padding:11px 18px;border-radius:999px;background:rgba(16,18,43,.92);border:1px solid var(--linha);font:500 14px/1.2 var(--corpo);color:var(--texto);white-space:nowrap;transition:opacity .5s,transform .5s}
+.dica.mostra{opacity:1;transform:translate(-50%,0)}
+
+@media (orientation:portrait),(max-width:760px){
+  .entrada{align-items:flex-end}
+  .entrada .dupla{right:auto;left:50%;transform:translateX(-50%);height:62dvh;width:112vw;max-width:none;object-position:center top;top:0;bottom:auto;animation:chegaM 1.6s cubic-bezier(.2,.7,.2,1) both}
+  .entrada::after{background:linear-gradient(0deg,var(--fundo) 0%,rgba(9,10,27,.9) 34%,rgba(9,10,27,0) 66%)}
+  .entrada .conteudo{padding-bottom:max(4px,env(safe-area-inset-bottom))}
+  .cta{width:100%;justify-content:center}
+}
+@keyframes chegaM{from{opacity:0;transform:translateX(-50%) translateY(3vh) scale(1.04)}to{opacity:1;transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .slide{opacity:1;transform:none}
+}
+</style>
+</head>
+<body class="travado">
+
+<section class="entrada" id="entrada" aria-label="Tela de entrada">
+  <img class="dupla" src="img/dupla.webp" alt="Fernando e Fabiano" decoding="async">
+  <div class="conteudo">
+    <p class="sobretitulo">Proposta de patrocínio</p>
+    <h1 class="nome">Fernando <em>&amp;</em> Fabiano</h1>
+    <p class="sub"><b>Show ao vivo</b> · 19 de dezembro · 21h<br>Autentic Lounge · São Lourenço, MG</p>
+    <button class="cta" id="abrir" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+      Toque para abrir
+    </button>
+    <p class="aviso">Com música · aumente o volume do aparelho</p>
+  </div>
+</section>
+
+<div class="topo" aria-hidden="true"><i id="barra"></i></div>
+<div class="contador" aria-live="polite"><b id="atual">01</b> / <span id="total">11</span></div>
+
+<button class="som" id="som" type="button" aria-pressed="false" aria-label="Ligar ou desligar a música">
+  <svg class="ico" id="icoOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="m17 9 5 6M22 9l-5 6"/></svg>
+  <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+</button>
+
+<main id="slides">
+  <div class="quadro"><div class="slide" data-n="1"><img src="slides/s01.jpg" alt="Capa: Proposta de patrocínio do show ao vivo de Fernando e Fabiano, sábado, 19 de dezembro, 21h, Autentic Lounge" width="1920" height="1080"></div></div>
+  <div class="quadro"><div class="slide" data-n="2"><img src="slides/s02.jpg" alt="O show: uma noite para ficar na memória. Sábado, 19/12, às 21h, no Autentic Lounge, em São Lourenço (MG)" width="1920" height="1080" loading="lazy"></div></div>
+  <div class="quadro"><div class="slide" data-n="3"><img src="slides/s03.jpg" alt="A dupla Fernando e Fabiano: 243 mil seguidores no Instagram, 221 mil inscritos no YouTube e 7,1 milhões de visualizações em Não é só Terminar" width="1920" height="1080" loading="lazy"></div></div>
+  <div class="quadro"><div class="slide" data-n="4"><img src="slides/s04.jpg" alt="Os projetos: NuDoze ao vivo, com destaques no YouTube" width="1920" height="1080" loading="lazy"></div></div>
+  <div class="quadro"><div class="slide" data-n="5"><img src="slides/s05.jpg" alt="O local: Autentic Lounge, em São Lourenço (MG), com capacidade para 1.500 pessoas" width="1920" height="1080" loading="lazy"></div></div>
+  <div class="quadro"><div class="slide" data-n="6"><img src="slides/s06.jpg" alt="Por que estar nessa noite: audiência de verdade, paixão nacional, experiência ao vivo e marca lembrada" width="1920" height="1080" loading="lazy"></div></div>
+  <div class="quadro"><div class="slide" data-n="7"><img src="slides/s07.jpg" alt="Sua marca em cada momento: divulgação antes, durante o show e repercussão depois" width="1920" height="1080" loading="lazy"></div></div>
+  <div class="quadro"><div class="slide" data-n="8"><img src="slides/s08.jpg" alt="Cotas de patrocínio: Ouro R$ 800,00, Prata R$ 500,00 e Bronze R$ 300,00" width="1920" height="1080" loading="lazy"></div></div>
+  <div class="quadro"><div class="slide" data-n="9"><img src="slides/s09.jpg" alt="Diferencial do plano Ouro: a dupla ao vivo na rádio local, com divulgação dos patrocinadores" width="1920" height="1080" loading="lazy"></div></div>
+  <div class="quadro"><div class="slide" data-n="10"><img src="slides/s10.jpg" alt="Próximos passos: escolha a cota, alinhamento da ativação e sua marca no palco em 19 de dezembro" width="1920" height="1080" loading="lazy"></div></div>
+  <div class="quadro"><div class="slide" data-n="11"><img src="slides/s11.jpg" alt="Sobre a Boreal Produções. Responsável: Eduardo Baroni, WhatsApp (21) 96799-1111, e-mail baroni@tutamail.com, Instagram @baroniedu" width="1920" height="1080" loading="lazy"></div></div>
+
+  <section class="fecho" id="contato">
+    <h2>Vamos fazer essa noite <em>juntos?</em></h2>
+    <p>Fale com Eduardo Baroni, da Boreal Produções, e escolha a cota que combina com a sua marca.</p>
+    <div class="botoes">
+      <a class="principal" id="zap" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm5.7 14.03c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.12.07-1.8-.11-.42-.13-.95-.31-1.64-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.51.25.6.85 2.08.93 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.09 1.31 2.39 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.7-.17 1.38z"/></svg>WhatsApp</a>
+      <a href="mailto:baroni@tutamail.com?subject=Proposta%20de%20patroc%C3%ADnio%20%E2%80%93%20Fernando%20%26%20Fabiano"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>E-mail</a>
+      <a href="https://instagram.com/baroniedu" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>@baroniedu</a>
+    </div>
+    <p class="rodape">Fernando &amp; Fabiano · 19.12 · 21h · Autentic Lounge</p>
+  </section>
+</main>
+
+<a class="whats" id="whats" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm5.7 14.03c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.12.07-1.8-.11-.42-.13-.95-.31-1.64-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.51.25.6.85 2.08.93 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.09 1.31 2.39 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.7-.17 1.38z"/></svg>WhatsApp</a>
+
+<div class="luz" id="luz" hidden role="dialog" aria-label="Slide ampliado">
+  <img id="luzImg" alt="">
+  <button class="fechar" id="fechar" type="button" aria-label="Fechar">&times;</button>
+  <button class="ant" id="ant" type="button" aria-label="Slide anterior">&lsaquo;</button>
+  <button class="prox" id="prox" type="button" aria-label="Próximo slide">&rsaquo;</button>
+</div>
+<div class="dica" id="dica" role="status"></div>
+
+<audio id="musica" src="audio/fiel-e-cheiroso.mp3" loop preload="auto" playsinline></audio>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var audio = $('musica'), entrada = $('entrada'), btnSom = $('som');
+  var quadros = [].slice.call(document.querySelectorAll('.slide'));
+  var total = quadros.length, atual = 1, aberto = false, querTocar = false, desligadoPeloUsuario = false;
+  var retrato = window.matchMedia('(orientation: portrait)');
+  var zap = 'https://wa.me/5521967991111?text=' + encodeURIComponent('Olá, Eduardo! Vi a proposta de patrocínio do show de Fernando & Fabiano (19/12, Autentic Lounge) e gostaria de saber mais.');
+  $('zap').href = zap; $('whats').href = zap; $('total').textContent = pad(total);
+
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+  function dica(texto, ms){ var d = $('dica'); d.textContent = texto; d.classList.add('mostra'); clearTimeout(dica.t); dica.t = setTimeout(function(){ d.classList.remove('mostra'); }, ms || 3800); }
+
+  function mostrarSom(tocando){
+    btnSom.classList.toggle('tocando', tocando);
+    btnSom.setAttribute('aria-pressed', tocando ? 'true' : 'false');
+    btnSom.setAttribute('aria-label', tocando ? 'Desligar a música' : 'Ligar a música');
+  }
+  function tocar(){
+    var p = audio.play();
+    if (p && p.then) p.then(function(){ mostrarSom(true); }, function(){ mostrarSom(false); });
+    else mostrarSom(!audio.paused);
+  }
+  function abrir(){
+    if (aberto) return; aberto = true;
+    querTocar = true; tocar();                       // o play() precisa acontecer dentro do toque
+    document.body.classList.remove('travado');
+    entrada.classList.add('saindo');
+    setTimeout(function(){ entrada.hidden = true; }, 950);
+    window.scrollTo(0, 0); agendar();
+    if (retrato.matches) setTimeout(function(){ dica('Toque no slide para ampliar'); }, 1400);
+  }
+  entrada.addEventListener('click', abrir);
+  entrada.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(); } });
+
+  btnSom.addEventListener('click', function(){
+    if (audio.paused){ desligadoPeloUsuario = false; querTocar = true; tocar(); }
+    else { desligadoPeloUsuario = true; querTocar = false; audio.pause(); mostrarSom(false); }
+  });
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden){ if (!audio.paused) audio.pause(); }
+    else if (querTocar && !desligadoPeloUsuario && aberto) tocar();
+  });
+
+  /* aparecer, contador e barra de progresso */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('vista'); });
+  }, { threshold: .12 });
+  quadros.forEach(function(q){ io.observe(q); });
+  var medindo = false;
+  function medir(){
+    medindo = false;
+    var meio = window.innerHeight / 2, melhor = 0, dist = Infinity;
+    quadros.forEach(function(q, i){ var r = q.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - meio); if (d < dist){ dist = d; melhor = i; } });
+    var noFecho = $('contato').getBoundingClientRect().top < window.innerHeight * .6;
+    atual = noFecho ? total : melhor + 1;
+    $('atual').textContent = pad(atual); $('barra').style.width = (atual / total * 100) + '%';
+    $('whats').classList.toggle('mostra', aberto && atual >= 8 && !noFecho);
+  }
+  function agendar(){ if (!medindo){ medindo = true; requestAnimationFrame(medir); } }
+  window.addEventListener('scroll', agendar, { passive: true });
+  window.addEventListener('resize', agendar);
+
+  /* ampliar */
+  var luz = $('luz'), luzImg = $('luzImg'), indice = 0;
+  function ver(i){ indice = (i + total) % total; luzImg.src = 'slides/s' + pad(indice + 1) + '.jpg'; luzImg.alt = quadros[indice].querySelector('img').alt; }
+  function abrirLuz(i){ ver(i); luz.hidden = false; $('whats').style.visibility = 'hidden'; }
+  function fecharLuz(){ luz.hidden = true; $('whats').style.visibility = ''; quadros[indice].scrollIntoView({ block: 'center' }); }
+  quadros.forEach(function(q, i){ q.addEventListener('click', function(){ if (retrato.matches || window.innerWidth < 700) abrirLuz(i); }); });
+  $('fechar').addEventListener('click', fecharLuz);
+  $('ant').addEventListener('click', function(){ ver(indice - 1); });
+  $('prox').addEventListener('click', function(){ ver(indice + 1); });
+  document.addEventListener('keydown', function(e){
+    if (!luz.hidden){ if (e.key === 'Escape') fecharLuz(); if (e.key === 'ArrowLeft') ver(indice - 1); if (e.key === 'ArrowRight') ver(indice + 1); return; }
+    if (!aberto) return;
+    if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === 'ArrowRight'){ e.preventDefault(); irPara(atual); }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp' || e.key === 'ArrowLeft'){ e.preventDefault(); irPara(atual - 2); }
+  });
+  function irPara(i){ if (i < 0) i = 0; if (i >= total){ $('contato').scrollIntoView({ behavior: 'smooth' }); return; } quadros[i].scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+})();
+</script>
+</body>
+</html>
