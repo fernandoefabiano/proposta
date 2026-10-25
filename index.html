@@ -117,6 +117,9 @@ img{max-width:100%}
   font:700 clamp(15px,1.6vw,18px)/1 var(--cond);letter-spacing:.16em;text-transform:uppercase;border:1.5px solid rgba(255,143,58,.6);background:rgba(255,143,58,.08)}
 .botoes a.principal{background:linear-gradient(135deg,var(--brasa-2),var(--brasa) 55%,#ff6a1f);color:#1a0c02;border-color:transparent;box-shadow:0 12px 34px rgba(255,120,30,.32)}
 .botoes svg{width:20px;height:20px}
+.contatos{list-style:none;padding:0;margin:34px auto 0;display:flex;flex-wrap:wrap;gap:12px 38px;justify-content:center;color:var(--texto-2);font-size:clamp(15px,1.5vw,18px)}
+.contatos b{margin-right:10px;color:var(--texto);font:600 13px/1 var(--cond);letter-spacing:.2em;text-transform:uppercase}
+.contatos a{color:var(--brasa-2);text-underline-offset:3px}
 .rodape{margin-top:46px;font:500 13px/1.6 var(--cond);letter-spacing:.2em;text-transform:uppercase;color:#6f6c91}
 
 /* ---------- formato celular: conteúdo em coluna ---------- */
@@ -226,10 +229,18 @@ img{max-width:100%}
 .m-btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:17px 20px;border-radius:999px;text-decoration:none;font:700 17px/1 var(--cond);letter-spacing:.16em;text-transform:uppercase;border:1.5px solid rgba(31,200,255,.6);background:rgba(31,200,255,.08)}
 .m-btn svg{width:20px;height:20px;flex:none}
 .m-btn.prim{background:linear-gradient(135deg,#19f7b2,#1fc8ff 55%,#8a5cff);color:#04120d;border-color:transparent;box-shadow:0 12px 34px rgba(31,200,255,.25)}
+.m-cp{margin-top:14px;color:#cfd8e6;font-size:16.5px;line-height:1.55}
+.m-pessoas{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.m-pessoa{min-width:0;padding:16px 14px;border-radius:16px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04)}
+.m-pessoa b{display:block;font:700 28px/1 var(--cond);letter-spacing:.02em;text-transform:uppercase}
+.m-pessoa span{display:block;margin-top:8px;color:#bcc6d8;font-size:15px;white-space:nowrap}
+.m-pessoa .m-btn{margin-top:14px;padding:14px 8px;font-size:15px;letter-spacing:.1em;gap:8px}
+.m-pessoa .m-btn svg{width:18px;height:18px}
+.m-ig{margin-top:10px}
 .m-dados{list-style:none;padding:0;margin:20px 0 0;border-top:1px solid rgba(255,255,255,.14)}
-.m-dados li{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.14);min-width:0}
-.m-dados span{flex:none;width:100%;font:600 12px/1 var(--cond);letter-spacing:.22em;text-transform:uppercase;color:#8fa3bd}
-.m-dados b{flex:1;min-width:0;font:500 16px/1.3 var(--corpo);overflow-wrap:anywhere}
+.m-dados li{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.14);min-width:0}
+.m-dados span{flex:1 1 auto;font:600 12px/1 var(--cond);letter-spacing:.22em;text-transform:uppercase;color:#8fa3bd}
+.m-dados b{flex:1 0 100%;min-width:0;font:500 16px/1.3 var(--corpo);overflow-wrap:anywhere}
 .m-dados button{flex:none;padding:8px 14px;border-radius:999px;border:1.5px solid rgba(31,200,255,.6);font:700 12px/1 var(--cond);letter-spacing:.16em;text-transform:uppercase;color:#1fc8ff}
 .m-fim{margin-top:40px;text-align:center;font:500 12px/1.7 var(--cond);letter-spacing:.2em;text-transform:uppercase;color:#6f7f99}
 
@@ -282,16 +293,21 @@ img{max-width:100%}
   <div class="quadro"><div class="slide" data-n="8"><img src="slides/s08.jpg" alt="Cotas de patrocínio: Ouro R$ 2.000,00 com 10 cortesias no espaço VIP, Prata R$ 1.000,00 com 5 cortesias na pista ou camarote e Bronze R$ 600,00 com 3 cortesias na pista" width="1920" height="1080" loading="lazy"></div></div>
   <div class="quadro"><div class="slide" data-n="9"><img src="slides/s09.jpg" alt="Diferencial do plano Ouro: a dupla ao vivo na rádio local, com divulgação dos patrocinadores" width="1920" height="1080" loading="lazy"></div></div>
   <div class="quadro"><div class="slide" data-n="10"><img src="slides/s10.jpg" alt="Próximos passos: escolha a cota, alinhamento da ativação e sua marca no palco em 19 de dezembro" width="1920" height="1080" loading="lazy"></div></div>
-  <div class="quadro"><div class="slide" data-n="11"><img src="slides/s11.jpg" alt="Sobre a Boreal Produções. Responsável: Eduardo Baroni, WhatsApp (21) 96799-1111, e-mail baroni@tutamail.com, Instagram @baroniedu" width="1920" height="1080" loading="lazy"></div></div>
+  <div class="quadro"><div class="slide" data-n="11"><img src="slides/s11.jpg" alt="Sobre a Boreal Produções: festas e shows feitos para o Brasil inteiro, com palco, luz, som e marca trabalhando juntos" width="1920" height="1080" loading="lazy"></div></div>
 
   <section class="fecho" id="contato">
     <h2>Vamos fazer essa noite <em>juntos?</em></h2>
-    <p>Fale com Eduardo Baroni, da Boreal Produções, e escolha a cota que combina com a sua marca.</p>
+    <p>Fale com nossa Equipe, da Boreal Produções, e escolha a cota que combina com a sua marca.</p>
     <div class="botoes">
-      <a class="principal zap" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm5.7 14.03c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.12.07-1.8-.11-.42-.13-.95-.31-1.64-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.51.25.6.85 2.08.93 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.09 1.31 2.39 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.7-.17 1.38z"/></svg>WhatsApp</a>
-      <a href="mailto:baroni@tutamail.com?subject=Proposta%20de%20patroc%C3%ADnio%20%E2%80%93%20Fernando%20%26%20Fabiano"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>E-mail</a>
-      <a href="https://instagram.com/baroniedu" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>@baroniedu</a>
+      <a class="principal" data-zap="baroni" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm5.7 14.03c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.12.07-1.8-.11-.42-.13-.95-.31-1.64-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.51.25.6.85 2.08.93 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.09 1.31 2.39 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.7-.17 1.38z"/></svg>WhatsApp · Baroni</a>
+      <a class="principal" data-zap="neto" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm5.7 14.03c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.12.07-1.8-.11-.42-.13-.95-.31-1.64-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.51.25.6.85 2.08.93 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.09 1.31 2.39 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.7-.17 1.38z"/></svg>WhatsApp · Neto</a>
+      <a href="https://instagram.com/borealprod" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>@borealprod</a>
     </div>
+    <ul class="contatos">
+      <li><b>Baroni</b>(21) 96799-1111</li>
+      <li><b>Neto</b>(12) 99637-9798</li>
+      <li><b>E-mail</b><a href="mailto:contato@borealproducoes.com.br?subject=Proposta%20de%20patroc%C3%ADnio%20%E2%80%93%20Fernando%20%26%20Fabiano">contato@borealproducoes.com.br</a></li>
+    </ul>
     <p class="rodape">Fernando &amp; Fabiano · 19.12 · 21h · Autentic Lounge</p>
   </section>
 </main>
@@ -472,15 +488,16 @@ img{max-width:100%}
         <li><b>Marcas</b><span>Patrocinadores perto do público certo.</span></li>
       </ul>
       <div class="m-contato rev">
-        <small>Responsável</small>
-        <h3>Eduardo Baroni</h3>
-        <div class="m-btns">
-          <a class="m-btn prim zap" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm5.7 14.03c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.12.07-1.8-.11-.42-.13-.95-.31-1.64-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.51.25.6.85 2.08.93 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.09 1.31 2.39 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.7-.17 1.38z"/></svg>Chamar no WhatsApp</a>
-          <a class="m-btn" href="https://instagram.com/baroniedu" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>@baroniedu</a>
+        <small>Fale com nossa equipe</small>
+        <h3>Boreal Produções</h3>
+        <p class="m-cp">Fale com nossa Equipe, da Boreal Produções, e escolha a cota que combina com a sua marca.</p>
+        <div class="m-pessoas">
+          <div class="m-pessoa"><b>Baroni</b><span>(21) 96799-1111</span><a class="m-btn prim" data-zap="baroni" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm5.7 14.03c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.12.07-1.8-.11-.42-.13-.95-.31-1.64-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.51.25.6.85 2.08.93 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.09 1.31 2.39 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.7-.17 1.38z"/></svg>WhatsApp</a></div>
+          <div class="m-pessoa"><b>Neto</b><span>(12) 99637-9798</span><a class="m-btn prim" data-zap="neto" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm5.7 14.03c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.12.07-1.8-.11-.42-.13-.95-.31-1.64-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.51.25.6.85 2.08.93 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.09 1.31 2.39 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.7-.17 1.38z"/></svg>WhatsApp</a></div>
         </div>
+        <a class="m-btn m-ig" href="https://instagram.com/borealprod" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>@borealprod</a>
         <ul class="m-dados">
-          <li><span>WhatsApp</span><b>(21) 96799-1111</b></li>
-          <li><span>E-mail</span><b id="email">baroni@tutamail.com</b><button type="button" id="copiar">Copiar</button></li>
+          <li><span>E-mail</span><button type="button" id="copiar">Copiar</button><b id="email">contato@borealproducoes.com.br</b></li>
         </ul>
       </div>
       <p class="m-fim">Fernando &amp; Fabiano · Ao vivo<br>19.12 · 21h · Autentic Lounge</p>
@@ -488,9 +505,9 @@ img{max-width:100%}
   </section>
 </main>
 
-<a class="whats zap" id="whats" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm5.7 14.03c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.12.07-1.8-.11-.42-.13-.95-.31-1.64-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.51.25.6.85 2.08.93 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.09 1.31 2.39 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.7-.17 1.38z"/></svg>WhatsApp</a>
+<a class="whats" id="whats" href="#contato" aria-label="Ir para os contatos da equipe"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm5.7 14.03c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.12.07-1.8-.11-.42-.13-.95-.31-1.64-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18 0 .43-.07.67.51.25.6.85 2.08.93 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.09 1.31 2.39 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.7-.17 1.38z"/></svg>Fale com a equipe</a>
 
-<audio id="musica" src="audio/fiel-e-cheiroso.mp3" loop preload="auto" playsinline></audio>
+<audio id="musica" src="audio/fiel-e-cheiroso.mp3" preload="auto" playsinline></audio>
 
 <script>
 (function(){
@@ -499,8 +516,20 @@ img{max-width:100%}
   var cel = window.matchMedia('(max-width: 860px), (orientation: portrait) and (max-width: 1100px)');
   var quadros = [].slice.call(document.querySelectorAll('.slide'));
   var total = quadros.length, atual = 1, aberto = false, querTocar = false, desligadoPeloUsuario = false;
-  var zap = 'https://wa.me/5521967991111?text=' + encodeURIComponent('Olá, Eduardo! Vi a proposta de patrocínio do show de Fernando & Fabiano (19/12, Autentic Lounge) e gostaria de saber mais.');
-  [].forEach.call(document.querySelectorAll('.zap'), function(a){ a.href = zap; });
+  var contatos = { baroni: { n: '5521967991111', nome: 'Baroni' }, neto: { n: '5512996379798', nome: 'Neto' } };
+  [].forEach.call(document.querySelectorAll('[data-zap]'), function(a){
+    var c = contatos[a.getAttribute('data-zap')];
+    a.href = 'https://wa.me/' + c.n + '?text=' + encodeURIComponent('Olá, ' + c.nome + '! Vi a proposta de patrocínio do show de Fernando & Fabiano (19/12, Autentic Lounge) e gostaria de saber mais.');
+  });
+  $('whats').addEventListener('click', function(e){ e.preventDefault(); $(cel.matches ? 'm-contato' : 'contato').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+
+  /* as duas musicas tocam em sequencia e em ciclo */
+  var faixas = ['audio/fiel-e-cheiroso.mp3', 'audio/reel.mp3'], faixa = 0;
+  audio.addEventListener('ended', function(){
+    faixa = (faixa + 1) % faixas.length;
+    audio.src = faixas[faixa];
+    tocar();
+  });
   $('total').textContent = pad(total);
 
   function pad(n){ return n < 10 ? '0' + n : '' + n; }
@@ -517,6 +546,7 @@ img{max-width:100%}
   function abrir(){
     if (aberto) return; aberto = true;
     querTocar = true; tocar();                       // o play() precisa acontecer dentro do toque
+    var aquecer = new Audio(); aquecer.preload = 'auto'; aquecer.src = 'audio/reel.mp3';   // deixa a segunda faixa pronta
     document.body.classList.remove('travado');
     entrada.classList.add('saindo');
     setTimeout(function(){ entrada.hidden = true; }, 950);
